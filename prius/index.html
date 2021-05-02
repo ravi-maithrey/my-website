@@ -1,28 +1,39 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Ravi Maithrey's Webpage</title>
-    <link rel='stylesheet' type='text/css' href='style.css'>
+    <link rel="stylesheet" href="style.css">
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <header>
-        <h1>Ravi Maithrey's Webpage</h1>
+        <nav>
+        <ul class="nav-bar">
+            <li class="nav-ele"><a href="index.html">Home</a></li>
+            <li class="nav-ele"><a href="articles.html">Blog and Articles</a></li>
+        </ul>
+        </nav>
+
     </header>
 
     <main>
+        
+        <h1>Home</h1>
+        
         <img class=right src = 'pic/image.webp' alt='Ravi' title = "Ravi Maithrey">
 
         <h2>Introduction</h2>
-        <p>Welcome to my website. Here I hope to present my writings on anything which strikes my fancy, some of the projects I'm working on, and my book recommendations and reviews.</p>
-        <p>This is page is, of course, currently under construction, so please stay tuned for more updates!</p>
-        <img class=centre src="under_construction.gif" alt="under construction" title="under construction!">
+        <p>Welcome to my website. Here I hope to present my thoughts on anything which strikes my fancy, some of the projects I'm working on, and my book recommendations and reviews.</p>
+        <p>Check out a few of my articles below:</p>
+        <ul>
+            <li><a href="./articles/nature_of_ideas.html">On the Nature of Ideas</a></li>
+        </ul>
     </main>
 
-    <footer>
-        <a href="mailto:maitrey.ind@gmail.com">📧Contact me via mail!</a>
+    <footer class="mailto">
+        <a href="mailto:maitrey.ind@gmail.com" class="mailto">📧Contact me via mail!</a>
     </footer>
 </body>
 </html>

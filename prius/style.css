@@ -3,51 +3,75 @@
 	src: url(./fonts/Computer_Modern/cmunrm.ttf);
 }
 
+@font-face {
+	font-family: "Computer Modern Bold";
+	src: url(./fonts/Computer_Modern/cmunbx.ttf);
+
+}
 body{
 	font-family: "Computer Modern";
 }
+
+.mailto{
+	text-align: center;
+	color: #53061a;
+	font-size: larger;
+	font-weight: bold;
+}
+
 p img, li img, h1 img, h2 img, h3 img, h4 img {
 	max-height: 1em;
 	max-width: 1em;
 	vertical-align: middle ;
 }
 
-nav,footer {
-    text-align: center ;
-    font-variant: small-caps ;
-    clear: both ;
-}
-
-nav { font-size: small ;}
 
 footer { font-size: large ; }
 
-nav li,footer li {
-	display: inline-block ;
-	list-style: none ;
-	background: rgba(0,0,0,.3) ;
-	border-radius: 10px ;
-	padding: .5em ;
-	max-width: 7em ;
+.nav-bar{
+	position: fixed;
+	top: 0;
+	padding: 0;
+	margin: 0;
+	left: 0;
+	width: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #53061a;
+	color: #d5b895;
 }
 
-
-nav a li:hover, footer a li:hover {
-	background: goldenrod ;
-	color: black ;
+.nav-ele{
+	float: left;
 }
 
+.nav-ele a{
+	display: block;
+	color:rgb(131, 87, 58);
+	text-align: center;
+	font: "Computer Modern Bold";
+	font-size: medium;
+	font-weight: bold;
+	padding: 1em 1em;
+}
+
+.nav-ele a:hover{
+	color:#53061a;
+	background-color:#d5b895
+}
 main {
 	margin: auto ;
-	color: #ddd ;
-	background: rgba(0, 0, 0, 0) ;
+	color: rgb(0, 0, 0) ;
 	padding: 20px ;
 	border-radius: 10px ;
+	font-size: large;
+	font-weight: 400;
 }
 
 strong { color: white ; }
 
-a strong { color: lime ; }
 
 details { padding-left: 20px ; text-decoration: underline; }
 
@@ -60,12 +84,6 @@ pre {
 	white-space: pre-wrap;
 }
 
-code {
-	background: #222 ;
-	color: lime ;
-	border-radius: 5px ;
-	overflow-wrap: break-word ;
-}
 
 
 ul {
@@ -80,22 +98,22 @@ li img, p img {
 
 html {
 	padding-top: 10px;
-	background: linear-gradient(to bottom right, rgb(102, 77, 150), rgb(41, 3, 63)) no-repeat fixed ;
+	background: #d5b895 ;
 	margin-bottom: 500px;
 
 }
 
 h1,h2,h3,h4 { text-align: center ; }
 
-h1 { color: rgb(197, 146, 35) ; }
+h1 { color: rgb(124, 90, 52) ; }
 
-h2 { color: rgb(51, 173, 146) ; }
+h2 { color: #53061a ; }
 
 h3 { color: rgb(95, 35, 24) ; }
 
-h4 { color: rgb(9, 255, 0) ; }
+h4 { color: rgb(51, 3, 3) ; }
 
-a { color: rgb(83, 224, 64) ; text-decoration: none ;}
+a { color: #53061a ; text-decoration: none ;}
 
 a:hover { color: rgb(147, 155, 134) ;}
 .new a:hover { color: rgb(153, 160, 142) ; }
@@ -172,12 +190,6 @@ dt { font-weight: bold ; color: lightgray ; }
 	}
 
 }
-
-/* footer { */
-/* 	font-size: large ; */
-/* 	margin: auto ; */
-/* 	max-width: 500px ; */
-/* } */
 
 .entry p, .entry li { margin-left: 2em ; }
 
