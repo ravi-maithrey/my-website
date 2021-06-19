@@ -75,7 +75,9 @@ main {
 	font-weight: 400;
 }
 
-strong { color: white ; }
+.review-score{
+	font-size: larger;
+}
 
 
 details { padding-left: 20px ; text-decoration: underline; }
@@ -263,4 +265,20 @@ aside {
 
 blockquote {
 	text-align: center ;
+}
+
+.bookcover{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.inline-left{
+	float: left;
+	padding-right: 3em;
+}
+
+.inline-right{
+	float: right;
+	padding-left: 3em;
 }
