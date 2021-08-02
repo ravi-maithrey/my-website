@@ -287,3 +287,13 @@ blockquote {
 	max-width: 100%;
 	height: auto;
   }
+
+  code {
+    font-family: monospace;
+    line-height : 100%;
+    background-color: #000000;
+    padding: 0.2em;
+    letter-spacing: -0.05em;
+    word-break: normal;
+    border-radius: 5px;
+  }
