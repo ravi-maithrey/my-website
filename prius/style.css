@@ -225,8 +225,6 @@ figure { text-align: center; }
 .i a { color: green ;}
 .d a { color: red ;}
 
-/* For QR codes for bitcoin and crypto */
-.qr { max-width: 150px ; padding: 10px }
 
 .entryinfo {
 	text-align: center ;
@@ -289,11 +287,19 @@ blockquote {
   }
 
   code {
-    font-family: monospace;
-    line-height : 100%;
-    background-color: #000000;
-    padding: 0.2em;
-    letter-spacing: -0.05em;
-    word-break: normal;
-    border-radius: 5px;
-  }
+	width: 500em; 
+	padding-block: 2.5em;
+	padding-right: 45em;
+	padding-left: 3em;
+	height: 300em;
+ font-family: monospace;
+ line-height : 100%;
+ background-color: #4b4545;
+   color: white;
+ 
+border-radius: 1em;
+  text-align:  left;
+ 
+	border-color: white;
+	
+}
