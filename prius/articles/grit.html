@@ -106,13 +106,59 @@
         use std::process::Command;
       </code></pre>
       These two lines allow us to import the libraries we need. The <code>std</code> library is present by default when rust 
-      is installed. But the library <code>Clap</code> needs to be downloaded and installed first before we can import it. 
+      is installed and we use the submodule process and subsubmodule Command to start a process and run a command within it. But the library <code>Clap</code> 
+      needs to be downloaded and installed first before we can import it. 
       To add it to our current project, we run the following in our terminal.
       <pre><code>
           cargo add clap.
       </code></pre>
       <br>
-      <code>Clap</code> is a library which allows us to easily parse command line arguments. 
+      <code>Clap</code> is a library which allows us to easily parse command line arguments. You can find more information about
+       the library by going through it's <a href="https://docs.rs/clap/2.33.3/clap/">documentation</a>. Here we will cover what is needed for our purposes. 
+       <br>
+       
+       The first thing to do is to create the <code>Opts</code> struct for <code>Clap</code>. Before we do that, you can see that we used the <code>derive</code> 
+       attribute before defining the struct. This attribute allows for new items to be automatically generated for data structures whenever we use them later 
+       in the program. Since we <code>derive(Clap)</code> this struct would be autmatically assigned data in the same format as defined by <code>Clap</code>.
+       <br>
+       <br>
+       Below that, we define the actual struct, which has to named 'Opts' for <code>Clap</code> to recognize it. Each line of this struct should start 
+       with a description of what the corresponding command-line argument would be. 
+       For our purposes we only need one command-line argument, which is the commit message. We specify that the argument can be specified as a 'short' form, 
+       i.e., <code>-m</code> and a long form which is <code>--message</code> and also specify a default value if people choose to ignore it. Then we give a name to the variable 
+       which stores our message. This variable's name is the one used in the command line argument to take inputs as specified above.
+       <br>
+       <br>
+       Once our struct is defined, we write the main function. First we parse the arguments from the command line and pass them to the struct using 
+       <code>Opts::parse()</code>. Then, we extract the message stored in the <code>message</code> variable. After this, we first start a child process 
+       to execute our commands, initializing it with the hashbang.
+       <br>
+       <br>
+       Do note that this is <code>bash</code> script and thus will work only in shells which support <code>bash</code>. We then create our command as a 
+       formatted string and add our command to the child process we created eariler. We also pass an argument <code>-c</code> to make sure that it is executed. 
+       To allow this command to be run, we call the <code>expect()</code> function on it.
+       <br>
+       <br>
+       <h3>Building and Running</h3>
+       To build this file for testing, simply run
+       <pre>
+           <code>cargo build</code>
+       </pre>
+       To build it with all the optimizations, use 
+       <pre>
+           <code>
+               cargo build --release
+           </code>
+       </pre>
+       The optimized binary would be found in the target/release subfolder. A good recommendation would be to copy it over to <code>/usr/local/bin</code> so that it 
+       is avialable on the command-line wherever you might want to run it at.
+
+       <h3>Closing Comments</h3>
+       This is a very simple project, but it is one which has already saved me a lot of time especially because I made it a habit of mine to have verson control 
+       on every project early and regularly. Little automation here and there saves a lot of cumulative effort and I'd urge all those who are reading this to try 
+       out such automation in their own lives. 
+
+       More detailed documentation on usage and other stuff can be found on the github repository, <a href="https://github.com/ravi-maithrey/grist/blob/main/DOCUMENTATION.md">here</a>.
   </main>
   </body>
 </html>

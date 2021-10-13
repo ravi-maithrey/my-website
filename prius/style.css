@@ -83,10 +83,9 @@ main {
 details { padding-left: 20px ; text-decoration: underline; }
 
 pre {
-	background: rgb(143, 143, 143) ;
+	background: rgb(173, 138, 138) ;
 	border-radius: 5px ;
-	padding: 1em ;
-	margin: 1em ;
+	padding: 1em;
 	white-space: pre-wrap;
 }
 
