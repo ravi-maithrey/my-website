@@ -3,6 +3,7 @@ package main
 //import packages we are going to use
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 )
@@ -29,13 +30,14 @@ func loadPage(title string) (*Page, error) {
 	return &Page{Title: title, Body: body}, nil
 }
 
-func viewBlog(w http.ResponseWriter, r *http.Request) {
-
+//this will handle urlsprefixed with "articles"
+func viewArticle(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/articles/"):] //extract page title by removing slice of first part containing /articles/
+	p, _ := loadPage(title)                 //_ allows us to skip storing the err return value as we wont use it
+	fmt.Fprintf(w, "<h1>%s</h1><div>%s</div>", p.Title, p.Body)
 }
 
 func main() {
-	p1 := &Page{Title: "TestPage", Body: []byte("<h1>This is a sample Page.</h1>")}
-	p1.save()
-	p2, _ := loadPage("TestPage")
-	fmt.Println(string(p2.Body))
+	http.HandleFunc("/articles/", viewArticle)
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
