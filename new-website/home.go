@@ -3,6 +3,7 @@ package main
 //import packages we are going to use
 import (
 	"fmt"
+	"net/http"
 	"os"
 )
 
@@ -26,6 +27,10 @@ func loadPage(title string) (*Page, error) {
 		return nil, err
 	}
 	return &Page{Title: title, Body: body}, nil
+}
+
+func viewBlog(w http.ResponseWriter, r *http.Request) {
+
 }
 
 func main() {
