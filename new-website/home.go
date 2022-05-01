@@ -37,7 +37,19 @@ func viewArticle(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "<h1>%s</h1><div>%s</div>", p.Title, p.Body)
 }
 
+//this will craete a new page or open the existing page both as a html form
+func editArticles(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/edit/"):] //extract page title by removing slice of first part containing /articles/
+	p, err := loadPage(title)
+	if err != nil {
+		p = &Page{Title: title} //we are creating a page if such a page doesn't exist
+	}
+
+}
+
 func main() {
-	http.HandleFunc("/articles/", viewArticle)
+	http.HandleFunc("/articles/", viewArticle) //to view the articles
+	http.HandleFunc("/edit/", editArticles)    //to edit the articles
+	http.HandleFunc("/save/", saveArticles)    //to save the articles
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
