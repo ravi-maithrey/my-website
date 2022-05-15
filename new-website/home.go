@@ -16,9 +16,10 @@ type Page struct {
 
 //to reduce rewriting same code again, we package the templating part into a func
 func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
-	template_name := tmpl + ".html"
-	t, _ := template.ParseFiles(template_name)
-	t.Execute(w, p)
+	err := templates.ExecuteTemplate(w, tmpl+".html", p)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 
 //create a functoin which saves the file as .html and returns an error type
@@ -54,6 +55,22 @@ func editArticles(w http.ResponseWriter, r *http.Request) {
 	}
 	renderTemplate(w, "edit", p) //executes what has been written into the page
 }
+
+// this func hadnles the form submission, i.e., submission of articles edited by editArticles
+func saveArticles(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/save/"):]
+	body := r.FormValue("body")
+	p := &Page{Title: title, Body: []byte(body)}
+	err := p.save()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	http.Redirect(w, r, "/view/"+title, http.StatusFound)
+}
+
+//creating a global variable to load template files into cache to prevent loading again and again
+var templates = template.Must(template.ParseFiles("edit.html", "view.html"))
 
 func main() {
 	http.HandleFunc("/articles/", viewArticle) //to view the articles
