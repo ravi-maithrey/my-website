@@ -66,11 +66,11 @@ func saveArticles(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	http.Redirect(w, r, "/view/"+title, http.StatusFound)
+	http.Redirect(w, r, "/articles/"+title, http.StatusFound)
 }
 
 //creating a global variable to load template files into cache to prevent loading again and again
-var templates = template.Must(template.ParseFiles("edit.html", "view.html"))
+var templates = template.Must(template.ParseFiles("edit.html", "article.html"))
 
 func main() {
 	http.HandleFunc("/articles/", viewArticle) //to view the articles
