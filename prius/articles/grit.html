@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Making life easier with Rust</title>
     <link rel="stylesheet" href="../style.css">
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Using rust to streamline git commit and pushing to github">
     <meta name="robots" content="index, follow">
@@ -11,69 +12,91 @@
 </head>
 
 <body>
-  <header>
+    <header>
         <nav>
-        <ul class="nav-bar">
-            <li class="nav-ele"><a href="../index.html">Home</a></li>
-            <li class="nav-ele"><a href="articles.html">Blog and Articles</a></li>
-            <li class="nav-ele"><a href="../journal_pubs.html">Publications and Research</a></li>
-        </ul>
+            <ul class="nav-bar">
+                <li class="nav-ele"><a href="../index.html">Home</a></li>
+                <li class="nav-ele"><a href="articles.html">Blog and Articles</a></li>
+                <li class="nav-ele"><a href="../journal_pubs.html">Publications and Research</a></li>
+                <li class="nav-ele"><a href="books.html">Books</a></li>
+            </ul>
         </nav>
-  </header>
-  <main>
-    <h1>
-        Making life easier with Rust: Pushing to GitHub via a single command
-    </h1>
-    I use git for almost all my code projects, including this website. And like almost all who use git, I also use github.
-    And as I finish any work I choose to do on a given day, I find myself facing the task of adding, commiting and pushing my code into my 
-    remote repository. Before we go on any further, I am indeed aware that these are just three simple
-    commands on the terminal. A single line even, if one were to make judicious use of '&' to put all these commands together in the same line.
-    <br>
-    <br>
-    But the problem with it lies in it's simplicity. Since we assume it is just a single line, we are not averse to typing it out again and again
-     as we assume no time wil be wasted by it. And yet the time spent typing these out adds up. That is not to mention how mind-numbing it would be to 
-     type out these commands over and over again for every change we make. What I am trying to get at is, these are the sort of tasks we ought to automate 
-     as much as possible. 
-     <br>
-     <br>
-     Having established that we will be writing a program to automate this simple, yet repetitive task, we need to decide which programming language we are going to use.
-     I have chosen to write my program in Rust. I did this because at the time I was writing this I was interested in Rust and was learning the language on my own.
-     So, this seemed like a fun little project for me to get a better grasp on the subject. I'll give a very brief introduction (in my terms) of Rust before we proceed to the actual code.
-     At the end, we would have an executable binary which we can run on the command line with a single word to perform 
-     the different tasks of adding, commiting and pushing.
-     Feel free to skip that if you already know what Rust is.
+    </header>
+    <main>
+        <h1>
+            Making life easier with Rust: Pushing to GitHub via a single command
+        </h1>
+        I use git for almost all my code projects, including this website. And like almost all who use git, I also use
+        github.
+        And as I finish any work I choose to do on a given day, I find myself facing the task of adding, commiting and
+        pushing my code into my
+        remote repository. Before we go on any further, I am indeed aware that these are just three simple
+        commands on the terminal. A single line even, if one were to make judicious use of '&' to put all these commands
+        together in the same line.
+        <br>
+        <br>
+        But the problem with it lies in it's simplicity. Since we assume it is just a single line, we are not averse to
+        typing it out again and again
+        as we assume no time wil be wasted by it. And yet the time spent typing these out adds up. That is not to
+        mention how mind-numbing it would be to
+        type out these commands over and over again for every change we make. What I am trying to get at is, these are
+        the sort of tasks we ought to automate
+        as much as possible.
+        <br>
+        <br>
+        Having established that we will be writing a program to automate this simple, yet repetitive task, we need to
+        decide which programming language we are going to use.
+        I have chosen to write my program in Rust. I did this because at the time I was writing this I was interested in
+        Rust and was learning the language on my own.
+        So, this seemed like a fun little project for me to get a better grasp on the subject. I'll give a very brief
+        introduction (in my terms) of Rust before we proceed to the actual code.
+        At the end, we would have an executable binary which we can run on the command line with a single word to
+        perform
+        the different tasks of adding, commiting and pushing.
+        Feel free to skip that if you already know what Rust is.
 
-     <h3>Rust</h3>
-     According to <a href="https://www.rust-lang.org/">rust-lang.org</a>, Rust is "A language empowering everyone
-     to build reliable and efficient software." According to Wikipedia, Rust is "Rust is a multi-paradigm, high-level, general-purpose programming language designed
-      for performance and safety, especially safe concurrency." None of these definitions made sense to me when I first started learning Rust. 
-      <br><br> The trick to getting what Rust actually lies in the fact that it is a systems language. Now, I forget where I first saw this term but it is widely used and certainly not an obscure descriptor.
-      Anyway, Rust being a systems language means it is used to build systems. Pretty straightforward, right? 
-      <br><br>
-      Rust is soon (as of writing) going to be a part of the Linux Kernel which was for a long time written only in C. Rust, of course, was developed by at Mozilla Research and used 
-      for writing the Mozilla browser engine. In essence, one can think of Rust as C/C++ but better and more importantly modern. Much of the design ideas behind developing 
-      Rust was to make sure it tackled the most common problems of C/C++ including, but not limited to, memory handling safety and very strict type-checking with different data-types 
-      within int and float with different bit sizes to be equivalent the byte, short, int, long, float and double.
-      <br><br>
-      Rust also comes with its own package manager and build system - <em>Cargo</em>. This makes it more modern in the vein of npm or pip, although the usage and the exact manner of package download
-      and incorporation is more npm's <em>package.json</em> and less <em>pip install</em>. 
-        
-      <h3>Getting Started</h3>
-      If you haven't already, please install Rust. I reccomend using the rustup tool avialable in <a href="https://www.rust-lang.org/">rust-lang.org</a>. Once that is done, 
-      decide on a name for your project. This will be the command you are going to call to do your work for you. I have chosen <em>"grist"</em> i.e., git with an r and an s(rs, for Rust of course). 
-      <br><br>
-      Type the following in a terminal
-      <br><br>
-      <pre>
+        <h3>Rust</h3>
+        According to <a href="https://www.rust-lang.org/">rust-lang.org</a>, Rust is "A language empowering everyone
+        to build reliable and efficient software." According to Wikipedia, Rust is "Rust is a multi-paradigm,
+        high-level, general-purpose programming language designed
+        for performance and safety, especially safe concurrency." None of these definitions made sense to me when I
+        first started learning Rust.
+        <br><br> The trick to getting what Rust actually lies in the fact that it is a systems language. Now, I forget
+        where I first saw this term but it is widely used and certainly not an obscure descriptor.
+        Anyway, Rust being a systems language means it is used to build systems. Pretty straightforward, right?
+        <br><br>
+        Rust is soon (as of writing) going to be a part of the Linux Kernel which was for a long time written only in C.
+        Rust, of course, was developed by at Mozilla Research and used
+        for writing the Mozilla browser engine. In essence, one can think of Rust as C/C++ but better and more
+        importantly modern. Much of the design ideas behind developing
+        Rust was to make sure it tackled the most common problems of C/C++ including, but not limited to, memory
+        handling safety and very strict type-checking with different data-types
+        within int and float with different bit sizes to be equivalent the byte, short, int, long, float and double.
+        <br><br>
+        Rust also comes with its own package manager and build system - <em>Cargo</em>. This makes it more modern in the
+        vein of npm or pip, although the usage and the exact manner of package download
+        and incorporation is more npm's <em>package.json</em> and less <em>pip install</em>.
+
+        <h3>Getting Started</h3>
+        If you haven't already, please install Rust. I reccomend using the rustup tool avialable in <a
+            href="https://www.rust-lang.org/">rust-lang.org</a>. Once that is done,
+        decide on a name for your project. This will be the command you are going to call to do your work for you. I
+        have chosen <em>"grist"</em> i.e., git with an r and an s(rs, for Rust of course).
+        <br><br>
+        Type the following in a terminal
+        <br><br>
+        <pre>
       <code>cargo init grist</code></pre>
 
-      Of course, grist is the name we have chosen for this package. You can choose whatever you wish.
+        Of course, grist is the name we have chosen for this package. You can choose whatever you wish.
 
-      This will create a new folder named grist within the present working directory. Navigate into the folder. That should have a subfolder named <code>src</code>
-      Within that subfolder, is a file <code>main.rs</code>. It is this file we will be modifying. It should have some placeholder code by default, 
-      to print <code>hello world.</code>. We'll be modifying as shown below.
-      <br>
-      <pre>
+        This will create a new folder named grist within the present working directory. Navigate into the folder. That
+        should have a subfolder named <code>src</code>
+        Within that subfolder, is a file <code>main.rs</code>. It is this file we will be modifying. It should have some
+        placeholder code by default,
+        to print <code>hello world.</code>. We'll be modifying as shown below.
+        <br>
+        <pre>
           <code>
             use clap::Clap;
             use std::process::Command;
@@ -100,66 +123,86 @@
           </code>
       </pre>
 
-      Let us go through this line by line to make sure we understand what is going on. 
-      <br>
-      <pre><code>
+        Let us go through this line by line to make sure we understand what is going on.
+        <br>
+        <pre><code>
         use clap::Clap;
         use std::process::Command;
       </code></pre>
-      These two lines allow us to import the libraries we need. The <code>std</code> library is present by default when rust 
-      is installed and we use the submodule process and subsubmodule Command to start a process and run a command within it. But the library <code>Clap</code> 
-      needs to be downloaded and installed first before we can import it. 
-      To add it to our current project, we run the following in our terminal.
-      <pre><code>
+        These two lines allow us to import the libraries we need. The <code>std</code> library is present by default
+        when rust
+        is installed and we use the submodule process and subsubmodule Command to start a process and run a command
+        within it. But the library <code>Clap</code>
+        needs to be downloaded and installed first before we can import it.
+        To add it to our current project, we run the following in our terminal.
+        <pre><code>
           cargo add clap.
       </code></pre>
-      <br>
-      <code>Clap</code> is a library which allows us to easily parse command line arguments. You can find more information about
-       the library by going through it's <a href="https://docs.rs/clap/2.33.3/clap/">documentation</a>. Here we will cover what is needed for our purposes. 
-       <br>
-       
-       The first thing to do is to create the <code>Opts</code> struct for <code>Clap</code>. Before we do that, you can see that we used the <code>derive</code> 
-       attribute before defining the struct. This attribute allows for new items to be automatically generated for data structures whenever we use them later 
-       in the program. Since we <code>derive(Clap)</code> this struct would be autmatically assigned data in the same format as defined by <code>Clap</code>.
-       <br>
-       <br>
-       Below that, we define the actual struct, which has to named 'Opts' for <code>Clap</code> to recognize it. Each line of this struct should start 
-       with a description of what the corresponding command-line argument would be. 
-       For our purposes we only need one command-line argument, which is the commit message. We specify that the argument can be specified as a 'short' form, 
-       i.e., <code>-m</code> and a long form which is <code>--message</code> and also specify a default value if people choose to ignore it. Then we give a name to the variable 
-       which stores our message. This variable's name is the one used in the command line argument to take inputs as specified above.
-       <br>
-       <br>
-       Once our struct is defined, we write the main function. First we parse the arguments from the command line and pass them to the struct using 
-       <code>Opts::parse()</code>. Then, we extract the message stored in the <code>message</code> variable. After this, we first start a child process 
-       to execute our commands, initializing it with the hashbang.
-       <br>
-       <br>
-       Do note that this is <code>bash</code> script and thus will work only in shells which support <code>bash</code>. We then create our command as a 
-       formatted string and add our command to the child process we created eariler. We also pass an argument <code>-c</code> to make sure that it is executed. 
-       To allow this command to be run, we call the <code>expect()</code> function on it.
-       <br>
-       <br>
-       <h3>Building and Running</h3>
-       To build this file for testing, simply run
-       <pre>
+        <br>
+        <code>Clap</code> is a library which allows us to easily parse command line arguments. You can find more
+        information about
+        the library by going through it's <a href="https://docs.rs/clap/2.33.3/clap/">documentation</a>. Here we will
+        cover what is needed for our purposes.
+        <br>
+
+        The first thing to do is to create the <code>Opts</code> struct for <code>Clap</code>. Before we do that, you
+        can see that we used the <code>derive</code>
+        attribute before defining the struct. This attribute allows for new items to be automatically generated for data
+        structures whenever we use them later
+        in the program. Since we <code>derive(Clap)</code> this struct would be autmatically assigned data in the same
+        format as defined by <code>Clap</code>.
+        <br>
+        <br>
+        Below that, we define the actual struct, which has to named 'Opts' for <code>Clap</code> to recognize it. Each
+        line of this struct should start
+        with a description of what the corresponding command-line argument would be.
+        For our purposes we only need one command-line argument, which is the commit message. We specify that the
+        argument can be specified as a 'short' form,
+        i.e., <code>-m</code> and a long form which is <code>--message</code> and also specify a default value if people
+        choose to ignore it. Then we give a name to the variable
+        which stores our message. This variable's name is the one used in the command line argument to take inputs as
+        specified above.
+        <br>
+        <br>
+        Once our struct is defined, we write the main function. First we parse the arguments from the command line and
+        pass them to the struct using
+        <code>Opts::parse()</code>. Then, we extract the message stored in the <code>message</code> variable. After
+        this, we first start a child process
+        to execute our commands, initializing it with the hashbang.
+        <br>
+        <br>
+        Do note that this is <code>bash</code> script and thus will work only in shells which support <code>bash</code>.
+        We then create our command as a
+        formatted string and add our command to the child process we created eariler. We also pass an argument
+        <code>-c</code> to make sure that it is executed.
+        To allow this command to be run, we call the <code>expect()</code> function on it.
+        <br>
+        <br>
+        <h3>Building and Running</h3>
+        To build this file for testing, simply run
+        <pre>
            <code>cargo build</code>
        </pre>
-       To build it with all the optimizations, use 
-       <pre>
+        To build it with all the optimizations, use
+        <pre>
            <code>
                cargo build --release
            </code>
        </pre>
-       The optimized binary would be found in the target/release subfolder. A good recommendation would be to copy it over to <code>/usr/local/bin</code> so that it 
-       is avialable on the command-line wherever you might want to run it at.
+        The optimized binary would be found in the target/release subfolder. A good recommendation would be to copy it
+        over to <code>/usr/local/bin</code> so that it
+        is avialable on the command-line wherever you might want to run it at.
 
-       <h3>Closing Comments</h3>
-       This is a very simple project, but it is one which has already saved me a lot of time especially because I made it a habit of mine to have verson control 
-       on every project early and regularly. Little automation here and there saves a lot of cumulative effort and I'd urge all those who are reading this to try 
-       out such automation in their own lives. 
+        <h3>Closing Comments</h3>
+        This is a very simple project, but it is one which has already saved me a lot of time especially because I made
+        it a habit of mine to have verson control
+        on every project early and regularly. Little automation here and there saves a lot of cumulative effort and I'd
+        urge all those who are reading this to try
+        out such automation in their own lives.
 
-       More detailed documentation on usage and other stuff can be found on the github repository, <a href="https://github.com/ravi-maithrey/grist/blob/main/DOCUMENTATION.md">here</a>.
-  </main>
-  </body>
+        More detailed documentation on usage and other stuff can be found on the github repository, <a
+            href="https://github.com/ravi-maithrey/grist/blob/main/DOCUMENTATION.md">here</a>.
+    </main>
+</body>
+
 </html>

@@ -8,27 +8,35 @@
 	src: url(./fonts/Computer_Modern/cmunbx.ttf);
 
 }
-body{
+
+body {
 	font-family: "Computer Modern";
 }
 
-.mailto{
+.mailto {
 	text-align: center;
 	color: #53061a;
 	font-size: larger;
 	font-weight: bold;
 }
 
-p img, li img, h1 img, h2 img, h3 img, h4 img {
+p img,
+li img,
+h1 img,
+h2 img,
+h3 img,
+h4 img {
 	max-height: 1em;
 	max-width: 1em;
-	vertical-align: middle ;
+	vertical-align: middle;
 }
 
 
-footer { font-size: large ; }
+footer {
+	font-size: large;
+}
 
-.nav-bar{
+.nav-bar {
 	position: fixed;
 	top: 0;
 	padding: 0;
@@ -43,13 +51,13 @@ footer { font-size: large ; }
 	color: #d5b895;
 }
 
-.nav-ele{
+.nav-ele {
 	float: left;
 }
 
-.nav-ele a{
+.nav-ele a {
 	display: block;
-	color:rgb(131, 87, 58);
+	color: rgb(131, 87, 58);
 	text-align: center;
 	font: "Computer Modern Bold";
 	font-size: medium;
@@ -57,34 +65,38 @@ footer { font-size: large ; }
 	padding: 1em 1em;
 }
 
-.nav-ele a:hover{
-	color:#53061a;
-	background-color:#d5b895
+.nav-ele a:hover {
+	color: #53061a;
+	background-color: #d5b895
 }
 
-.pdf-link{
-text-align: center;
-font-size: small;
+.pdf-link {
+	text-align: center;
+	font-size: small;
 }
+
 main {
-	margin: auto ;
-	color: rgb(0, 0, 0) ;
-	padding: 20px ;
-	border-radius: 10px ;
+	margin: auto;
+	color: rgb(0, 0, 0);
+	padding: 20px;
+	border-radius: 10px;
 	font-size: large;
 	font-weight: 400;
 }
 
-.review-score{
+.review-score {
 	font-size: larger;
 }
 
 
-details { padding-left: 20px ; text-decoration: underline; }
+details {
+	padding-left: 20px;
+	text-decoration: underline;
+}
 
 pre {
-	background: rgb(173, 138, 138) ;
-	border-radius: 5px ;
+	background: rgb(173, 138, 138);
+	border-radius: 5px;
 	padding: 1em;
 	white-space: pre-wrap;
 }
@@ -92,59 +104,83 @@ pre {
 
 
 ul {
-	margin-left: 20px ;
-	margin-right: 20px ;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
-li img, p img {
-	max-height: 1em ;
-	max-width: 1em ;
+li img,
+p img {
+	max-height: 1em;
+	max-width: 1em;
 }
 
 html {
 	padding-top: 10px;
-	background: #d5b895 ;
+	background: #d5b895;
 	margin-bottom: 500px;
 
 }
 
-h1,h2,h3,h4 { text-align: center ; }
+h1,
+h2,
+h3 {
+	text-align: center;
+}
 
-h1 { color: rgb(124, 90, 52) ; }
+h1 {
+	color: rgb(124, 90, 52);
+}
 
-h2 { color: #53061a ; }
+h2 {
+	color: #53061a;
+}
 
-h3 { color: rgb(95, 35, 24) ; }
+h3 {
+	color: rgb(95, 35, 24);
+}
 
-h4 { color: rgb(51, 3, 3) ; }
+h4 {
+	color: rgb(51, 3, 3);
+}
 
-a { color: #53061a ; text-decoration: none ;}
+a {
+	color: #53061a;
+	text-decoration: none;
+}
 
-a:hover { color: rgb(147, 155, 134) ;}
-.new a:hover { color: rgb(153, 160, 142) ; }
+a:hover {
+	color: rgb(147, 155, 134);
+}
+
+.new a:hover {
+	color: rgb(153, 160, 142);
+}
 
 
-dt { font-weight: bold ; color: lightgray ; }
+dt {
+	font-weight: bold;
+	color: lightgray;
+}
 
 .right {
-	display: block ;
-	margin: auto ;
-	max-width: 90% ;
+	display: block;
+	margin: auto;
+	max-width: 90%;
 }
 
 .disappear {
-	display: none ;
+	display: none;
 }
 
 .titleimg {
-	display: block ;
-	margin: auto ;
-	max-width: 90% ;
-	max-height: 400px ;
+	display: block;
+	margin: auto;
+	max-width: 90%;
+	max-height: 400px;
 }
 
 .lol {
-	padding: .25em ;
+	padding: .25em;
 }
 
 .lol ul {
@@ -159,118 +195,144 @@ dt { font-weight: bold ; color: lightgray ; }
 
 @media (min-width: 55em) {
 
-    /* nav { */
-    /*     position: fixed; */
-    /* } */
-    /* nav li { */
-    /*     display: block ; */
-    /*     margin: 10px ; */
-    /* } */
+	/* nav { */
+	/*     position: fixed; */
+	/* } */
+	/* nav li { */
+	/*     display: block ; */
+	/*     margin: 10px ; */
+	/* } */
 
-	.lol { display: inline-block; vertical-align: top ; }
-
-	.right, .disappear {
-		display: block ;
-		float: right;
-		padding: 20px ;
-		clear: both ;
-		max-height: 300px ;
-		max-width: 200px ;
-        border: #ddd;
+	.lol {
+		display: inline-block;
+		vertical-align: top;
 	}
 
-    .centre{
-        margin: auto;
-        width: 50%;
-        padding: 10px;
-        max-height: 400px ;
-		max-width: 300px ;
-    }
+	.right,
+	.disappear {
+		display: block;
+		float: right;
+		padding: 20px;
+		clear: both;
+		max-height: 300px;
+		max-width: 200px;
+		border: #ddd;
+	}
 
-	main { max-width: 850px ; }
+	.centre {
+		margin: auto;
+		width: 50%;
+		padding: 10px;
+		max-height: 400px;
+		max-width: 300px;
+	}
+
+	main {
+		max-width: 850px;
+	}
 
 	.column {
 		float: left;
-		width: 50% ;
+		width: 50%;
 	}
 
 }
 
-.entry p, .entry li { margin-left: 2em ; }
+.entry p,
+.entry li {
+	margin-left: 2em;
+}
 
-figure img { max-width: 100% ; margin: auto ; }
+figure img {
+	max-width: 100%;
+	margin: auto;
+}
 
-figcaption { font-style: italic ; font-size: small ; }
+figcaption {
+	font-style: italic;
+	font-size: small;
+}
 
-figure { text-align: center; }
+figure {
+	text-align: center;
+}
 
 #toc {
-	font-size: x-large ;
-	margin-left: auto ;
-	margin-right: auto ;
-	max-width: 500px ;
+	font-size: x-large;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 500px;
 
 }
 
-#toc li { padding: 5px }
+#toc li {
+	padding: 5px
+}
 
 
 
-.i a { color: green ;}
-.d a { color: red ;}
+.i a {
+	color: green;
+}
+
+.d a {
+	color: red;
+}
 
 
 .entryinfo {
-	text-align: center ;
-	font-size: x-small ;
-	margin: 0 ;
+	text-align: center;
+	font-size: x-small;
+	margin: 0;
 }
 
 #mainmenu {
-	font-size: large ;
+	font-size: large;
 }
 
 
 
 #mainmenu dd {
-  display: inline;
-  margin: 0;
+	display: inline;
+	margin: 0;
 }
-#mainmenu dd:after{
-  display: block;
-  content: '';
+
+#mainmenu dd:after {
+	display: block;
+	content: '';
 }
-#mainmenu dt{
-  display: inline-block;
-  min-width: 100px;
+
+#mainmenu dt {
+	display: inline-block;
+	min-width: 100px;
 }
 
 aside {
-	font-size: small ;
-	color: lightgray ;
-	margin-left: 3em ;
-	margin-right: 3em ;
-	padding: 0 1em 0 1em ;
-	border: 1px solid black ;
-	border-radius: 20px ;
+	font-size: small;
+	color: lightgray;
+	margin-left: 3em;
+	margin-right: 3em;
+	padding: 0 1em 0 1em;
+	border: 1px solid black;
+	border-radius: 20px;
 }
 
 blockquote {
-	text-align: center ;
+	text-align: center;
 }
 
-.bookcover{
+.bookcover {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.inline-left{
+.inline-left {
 	float: left;
 	padding-right: 3em;
 }
 
-.inline-right{
+.inline-right {
 	float: right;
 	padding-left: 3em;
 }
@@ -278,5 +340,4 @@ blockquote {
 .speech-video {
 	max-width: 100%;
 	height: auto;
-  }
-
+}
